@@ -1,0 +1,61 @@
+Diagram database untuk aplikasi rumah makan dapat dirancang menggunakan MySQL atau PostgreSQL. Kedua database ini memiliki fitur yang memungkinkan pengguna untuk melakukan query yang efisien pada database yang besar dan dapat dikonfigurasi untuk menghindari kerusakan data.
+
+Untuk implementasi aplikasi menggunakan Golang, beberapa teknologi yang dapat digunakan antara lain:
+
+    Gin-Gonic: framework web untuk membantu membangun API RESTful dengan mudah
+    GORM: ORM (Object-Relational Mapping) untuk memetakan model aplikasi ke tabel database
+
+Tabel-tabel dan kolom yang dibutuhkan untuk database aplikasi rumah makan antara lain:
+
+    Tabel Pelanggan
+
+    ID_Pelanggan (PK)
+    Nama_Pelanggan
+    Nomor_Telepon
+    Alamat
+
+    Tabel Pesanan
+
+    ID_Pesanan (PK)
+    ID_Pelanggan (FK)
+    Tanggal_Pesanan
+    Total_Harga
+
+    Tabel Menu
+
+    ID_Menu (PK)
+    Nama_Menu
+    Harga_Menu
+    Jumlah_Stok
+
+    Tabel Detail_Pesanan
+
+    ID_Pesanan (FK)
+    ID_Menu (FK)
+    Jumlah_Pesanan
+
+    Tabel Struk_Pembelian
+
+    ID_Struk (PK)
+    ID_Pesanan (FK)
+    Tanggal_Pembelian
+    Total_Harga
+
+    Tabel Laporan_Penghasilan
+
+    ID_Laporan (PK)
+    Tanggal_Laporan
+    Total_Penghasilan
+
+    Tabel Laporan_Stok
+
+    ID_Laporan (PK)
+    Tanggal_Laporan
+    Jumlah_Stok
+
+Relasi antar tabel adalah sebagai berikut:
+
+    Tabel Pelanggan memiliki relasi One-to-Many dengan Tabel Pesanan
+    Tabel Pesanan memiliki relasi One-to-Many dengan Tabel Detail_Pesanan
+    Tabel Menu memiliki relasi One-to-Many dengan Tabel Detail_Pesanan
+    Tabel Struk_Pembelian memiliki relasi One-to-One dengan Tabel Pesanan
